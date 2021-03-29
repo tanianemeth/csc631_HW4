@@ -19,7 +19,7 @@ public class ActionMenu : MonoBehaviour
 
 	public void OnInteractClick()
 	{
-		gameManager.StartInteraction();
+		gameManager.restart();
 	}
 
 	void Update()

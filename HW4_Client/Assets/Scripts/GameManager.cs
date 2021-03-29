@@ -61,7 +61,8 @@ public class GameManager : MonoBehaviour
 
 	public bool CanInteract()
 	{
-		return canInteract;
+		//return canInteract;
+		return true;
 	}
 
 	public void StartInteraction()
@@ -148,6 +149,22 @@ public class GameManager : MonoBehaviour
 		return false;
 	}
 
+	public void restart()
+	{
+		if(checkForWin()){
+			for(int x =0; x < 3; x++)
+			{
+				for(int y = 0; y < 3; y ++){
+					if(gameBoard[x,y] != null){
+						Destroy(gameBoard[x,y].gameObject);
+					}
+
+				}
+			}
+		}
+
+
+	}
 	public void ProcessClick(GameObject hitObject)
 	{
 		if (hitObject.tag == "Tile")
@@ -161,9 +178,10 @@ public class GameManager : MonoBehaviour
 				//hero1.Index = i;
 				GetCurrentPlayer().AddHero(hero);
 				gameBoard[x, y] = hero;
-				checkForWin();
+				//checkForWin();
 				if(checkForWin()){
 					print("You won");
+					canInteract = true;
 				}
 				EndTurn();
 
