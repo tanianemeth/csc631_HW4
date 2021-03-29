@@ -118,6 +118,21 @@ public class GameManager : MonoBehaviour
 		canInteract = false;
 		currentPlayer = 3 - currentPlayer;
 	}
+	public bool checkForDraw()
+	{
+		for(int x =0; x < 3; x++)
+		{
+			for(int y = 0; y < 3; y ++){
+				if(gameBoard[x,y] == null){
+					return false;
+
+				}
+
+			}
+		}
+		return true;
+
+	}
 	public bool checkForWin()
 	{
 		for(int i = 0; i < 3; i ++)
@@ -151,12 +166,14 @@ public class GameManager : MonoBehaviour
 
 	public void restart()
 	{
-		if(checkForWin()){
+
+		if(checkForWin() || checkForDraw()){
 			for(int x =0; x < 3; x++)
 			{
 				for(int y = 0; y < 3; y ++){
 					if(gameBoard[x,y] != null){
 						Destroy(gameBoard[x,y].gameObject);
+						gameBoard[x,y] = null;
 					}
 
 				}
@@ -182,6 +199,13 @@ public class GameManager : MonoBehaviour
 				if(checkForWin()){
 					print("You won");
 					canInteract = true;
+				}
+				else{
+					if(checkForDraw())
+					{
+						print("Draw");
+						canInteract = true;
+					}
 				}
 				EndTurn();
 
