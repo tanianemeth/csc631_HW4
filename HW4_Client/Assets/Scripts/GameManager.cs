@@ -121,28 +121,41 @@ public class GameManager : MonoBehaviour
 	{
 		if (hitObject.tag == "Tile")
 		{
-			if (ObjectSelector.SelectedObject)
-			{
-				Hero hero = ObjectSelector.SelectedObject.GetComponentInParent<Hero>();
-				if (hero)
-				{
-					int x = (int)hitObject.transform.position.x;
-					int y = (int)hitObject.transform.position.z;
-					if (gameBoard[x, y] == null)
-					{
-						if (hero.CanMoveTo(x, y))
-						{
-							if (useNetwork)
-							{
-								networkManager.SendMoveRequest(hero.Index, x, y);
-							}
-							gameBoard[hero.x, hero.y] = null;
-							hero.Move(x, y);
-							gameBoard[x, y] = hero;
-						}
-					}
-				}
+			int x = (int)hitObject.transform.position.x;
+			int y = (int)hitObject.transform.position.z;
+			if(gameBoard[x, y] == null){
+				GameObject heroObj = Instantiate(HeroPrefab, new Vector3(x, 0, y), Quaternion.identity);
+				heroObj.GetComponentInChildren<Renderer>().material.color = GetCurrentPlayer().Color;
+				Hero hero = heroObj.GetComponent<Hero>();
+				//hero1.Index = i;
+				GetCurrentPlayer().AddHero(hero);
+				gameBoard[x, y] = hero;
+				EndTurn();
+
 			}
+
+			// if (ObjectSelector.SelectedObject)
+			// {
+			// 	Hero hero = ObjectSelector.SelectedObject.GetComponentInParent<Hero>();
+			// 	if (hero)
+			// 	{
+			// 		int x = (int)hitObject.transform.position.x;
+			// 		int y = (int)hitObject.transform.position.z;
+			// 		if (gameBoard[x, y] == null)
+			// 		{
+			// 			if (hero.CanMoveTo(x, y))
+			// 			{
+			// 				if (useNetwork)
+			// 				{
+			// 					networkManager.SendMoveRequest(hero.Index, x, y);
+			// 				}
+			// 				gameBoard[hero.x, hero.y] = null;
+			// 				hero.Move(x, y);
+			// 				gameBoard[x, y] = hero;
+			// 			}
+			// 		}
+			// 	}
+			// }
 		}
 		else
 		{

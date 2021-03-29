@@ -279,7 +279,7 @@ public class MainMenu : MonoBehaviour
 		Player player1 = new Player(1, p1Name, new Color(0.9f, 0.1f, 0.1f), true);
 		Player player2 = new Player(2, p2Name, new Color(0.2f, 0.2f, 1.0f), true);
 		gameManager.Init(player1, player2);
-		SceneManager.LoadScene("Game");
+		SceneManager.LoadScene("TicTacToe");
 	}
 
 	private void StartNetworkGame()
