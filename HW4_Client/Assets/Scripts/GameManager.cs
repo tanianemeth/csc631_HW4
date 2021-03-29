@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 	public Player[] Players = new Player[2];
 	public GameObject HeroPrefab;
 
-	private Hero[,] gameBoard = new Hero[6,5];
+	private Hero[,] gameBoard = new Hero[3,3];
 
 	private int currentPlayer = 1;
 	private bool canInteract = false;
@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 		MessageQueue msgQueue = networkManager.GetComponent<MessageQueue>();
 		msgQueue.AddCallback(Constants.SMSG_MOVE, OnResponseMove);
 		msgQueue.AddCallback(Constants.SMSG_INTERACT, OnResponseInteract);
+		msgQueue.AddCallback(Constants.SMSG_WIN, OnResponseWin);
 	}
 
 	public Player GetCurrentPlayer()
@@ -116,6 +117,36 @@ public class GameManager : MonoBehaviour
 		canInteract = false;
 		currentPlayer = 3 - currentPlayer;
 	}
+	public bool checkForWin()
+	{
+		for(int i = 0; i < 3; i ++)
+		{
+			//rows
+			if(gameBoard[i, 0] != null && gameBoard[i, 1] != null && gameBoard[i,2] != null){
+				if(gameBoard[i, 0].Owner == gameBoard[i, 1].Owner && gameBoard[i,1].Owner == gameBoard[i, 2].Owner){
+					return true;
+				}
+			}
+			//columns
+			if(gameBoard[0, i] != null && gameBoard[1, i] != null && gameBoard[2,i] != null){
+				if(gameBoard[0, i].Owner == gameBoard[1, i].Owner && gameBoard[1,i].Owner == gameBoard[2, i].Owner){
+					return true;
+				}
+			}
+		}
+		//diagonals
+		if(gameBoard[0, 0] != null && gameBoard[1, 1] != null && gameBoard[2,2] != null){
+			if(gameBoard[0, 0].Owner == gameBoard[1, 1].Owner && gameBoard[1,1].Owner == gameBoard[2, 2].Owner){
+				return true;
+			}
+		}
+		if(gameBoard[0, 2] != null && gameBoard[1, 1] != null && gameBoard[2,0] != null){
+			if(gameBoard[0, 2].Owner == gameBoard[1, 1].Owner && gameBoard[1,1].Owner == gameBoard[2, 0].Owner){
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public void ProcessClick(GameObject hitObject)
 	{
@@ -130,6 +161,10 @@ public class GameManager : MonoBehaviour
 				//hero1.Index = i;
 				GetCurrentPlayer().AddHero(hero);
 				gameBoard[x, y] = hero;
+				checkForWin();
+				if(checkForWin()){
+					print("You won");
+				}
 				EndTurn();
 
 			}
@@ -252,6 +287,10 @@ public class GameManager : MonoBehaviour
 		{
 			Debug.Log("ERROR: Invalid user_id in ResponseReady: " + args.user_id);
 		}
+	}
+	public void OnResponseWin(ExtendedEventArgs eventArgs)
+	{
+		ResponseWinEventArgs args = eventArgs as ResponseWinEventArgs;
 	}
 
 	public void OnResponseInteract(ExtendedEventArgs eventArgs)
