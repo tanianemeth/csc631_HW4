@@ -27,7 +27,7 @@ public class ResponseMove extends GameResponse {
         packet.addInt32(x);
         packet.addInt32(y);
 
-        Log.printf("Player with id %d has moved piece %d to (%d, %d)", player.getID(), index, x, y);
+        Log.printf("Player with id %d has placed piece at (%d, %d)", player.getID(), x, y);
  
         return packet.getBytes();
     }
