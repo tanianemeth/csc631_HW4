@@ -186,30 +186,39 @@ public class GameManager : MonoBehaviour
 	{
 		if (hitObject.tag == "Tile")
 		{
-			int x = (int)hitObject.transform.position.x;
-			int y = (int)hitObject.transform.position.z;
-			if(gameBoard[x, y] == null){
-				GameObject heroObj = Instantiate(HeroPrefab, new Vector3(x, 0, y), Quaternion.identity);
-				heroObj.GetComponentInChildren<Renderer>().material.color = GetCurrentPlayer().Color;
-				Hero hero = heroObj.GetComponent<Hero>();
-				//hero1.Index = i;
-				GetCurrentPlayer().AddHero(hero);
-				gameBoard[x, y] = hero;
-				//checkForWin();
-				if(checkForWin()){
-					print("You won");
-					canInteract = true;
-				}
-				else{
-					if(checkForDraw())
+			if(GetCurrentPlayer().UserID == Constants.USER_ID)
+			{
+				int x = (int)hitObject.transform.position.x;
+				int y = (int)hitObject.transform.position.z;
+				if(gameBoard[x, y] == null){
+					GameObject heroObj = Instantiate(HeroPrefab, new Vector3(x, 0, y), Quaternion.identity);
+					heroObj.GetComponentInChildren<Renderer>().material.color = GetCurrentPlayer().Color;
+					Hero hero = heroObj.GetComponent<Hero>();
+					//hero1.Index = i;
+					GetCurrentPlayer().AddHero(hero);
+					gameBoard[x, y] = hero;
+					if (useNetwork)
 					{
-						print("Draw");
+						networkManager.SendMoveRequest(0, x, y);
+					}
+					//checkForWin();
+					if(checkForWin()){
+						print("You won");
 						canInteract = true;
 					}
+					else{
+						if(checkForDraw())
+						{
+							print("Draw");
+							canInteract = true;
+						}
+					}
+					EndTurn();
+
 				}
-				EndTurn();
 
 			}
+
 
 			// if (ObjectSelector.SelectedObject)
 			// {
@@ -313,13 +322,34 @@ public class GameManager : MonoBehaviour
 		ResponseMoveEventArgs args = eventArgs as ResponseMoveEventArgs;
 		if (args.user_id == Constants.OP_ID)
 		{
-			int pieceIndex = args.piece_idx;
 			int x = args.x;
 			int y = args.y;
-			Hero hero = Players[args.user_id - 1].Heroes[pieceIndex];
-			gameBoard[hero.x, hero.y] = null;
-			hero.Move(x, y);
-			gameBoard[x, y] = hero;
+			if(gameBoard[x, y] == null){
+				GameObject heroObj = Instantiate(HeroPrefab, new Vector3(x, 0, y), Quaternion.identity);
+				heroObj.GetComponentInChildren<Renderer>().material.color = GetCurrentPlayer().Color;
+				Hero hero = heroObj.GetComponent<Hero>();
+				GetCurrentPlayer().AddHero(hero);
+				gameBoard[x, y] = hero;
+				if(checkForWin()){
+					print("Someone Won");
+					canInteract = true;
+				}
+				else{
+					if(checkForDraw())
+					{
+						print("Draw");
+						canInteract = true;
+					}
+				}
+				EndTurn();
+}
+			// int pieceIndex = args.piece_idx;
+			// int x = args.x;
+			// int y = args.y;
+			// Hero hero = Players[args.user_id - 1].Heroes[pieceIndex];
+			// gameBoard[hero.x, hero.y] = null;
+			// hero.Move(x, y);
+			// gameBoard[x, y] = hero;
 		}
 		else if (args.user_id == Constants.USER_ID)
 		{
