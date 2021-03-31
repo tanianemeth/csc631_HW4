@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 		msgQueue.AddCallback(Constants.SMSG_MOVE, OnResponseMove);
 		msgQueue.AddCallback(Constants.SMSG_INTERACT, OnResponseInteract);
 		msgQueue.AddCallback(Constants.SMSG_WIN, OnResponseWin);
+		msgQueue.AddCallback(Constants.SMSG_RESTART, OnResponseRestart);
 	}
 
 	public Player GetCurrentPlayer()
@@ -178,15 +179,19 @@ public class GameManager : MonoBehaviour
 
 				}
 			}
+
 		}
 
 
 	}
 	public void ProcessClick(GameObject hitObject)
 	{
+		if(checkForWin()){
+			return;
+		}
 		if (hitObject.tag == "Tile")
 		{
-			if(GetCurrentPlayer().UserID == Constants.USER_ID)
+			if(! useNetwork || GetCurrentPlayer().UserID == Constants.USER_ID)
 			{
 				int x = (int)hitObject.transform.position.x;
 				int y = (int)hitObject.transform.position.z;
@@ -316,6 +321,14 @@ public class GameManager : MonoBehaviour
 	{
 		return (Math.Abs(hero1.x - hero2.x) + Math.Abs(hero1.y - hero2.y) == 1);
 	}
+	public void OnRestartClick()
+	{
+		if(useNetwork)
+		{
+			networkManager.SendRestartRequest();
+		}
+		restart();
+	}
 
 	public void OnResponseMove(ExtendedEventArgs eventArgs)
 	{
@@ -363,6 +376,11 @@ public class GameManager : MonoBehaviour
 	public void OnResponseWin(ExtendedEventArgs eventArgs)
 	{
 		ResponseWinEventArgs args = eventArgs as ResponseWinEventArgs;
+	}
+	public void OnResponseRestart(ExtendedEventArgs eventArgs)
+	{
+		ResponseRestartEventArgs args = eventArgs as ResponseRestartEventArgs;
+		restart();
 	}
 
 	public void OnResponseInteract(ExtendedEventArgs eventArgs)

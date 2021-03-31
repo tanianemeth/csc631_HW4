@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class NetworkResponseTable {
 
 	public static Dictionary<short, Type> responseTable { get; set; }
-	
+
 	public static void init() {
 		responseTable = new Dictionary<short, Type>();
 		add(Constants.SMSG_JOIN, "ResponseJoin");
@@ -15,12 +15,14 @@ public class NetworkResponseTable {
 		add(Constants.SMSG_READY, "ResponseReady");
 		add(Constants.SMSG_MOVE, "ResponseMove");
 		add(Constants.SMSG_INTERACT, "ResponseInteract");
+		add(Constants.SMSG_RESTART, "ResponseRestart");
+		add(Constants.SMSG_WIN, "ResponseWin");
 	}
-	
+
 	public static void add(short response_id, string name) {
 		responseTable.Add(response_id, Type.GetType(name));
 	}
-	
+
 	public static NetworkResponse get(short response_id) {
 		init ();
 		NetworkResponse response = null;
@@ -30,7 +32,7 @@ public class NetworkResponseTable {
 		} else {
 			Debug.Log("Response [" + response_id + "] Not Found");
 		}
-		
+
 		return response;
 	}
 }

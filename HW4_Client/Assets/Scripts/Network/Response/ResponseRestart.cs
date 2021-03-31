@@ -18,6 +18,7 @@ public class ResponseRestart : NetworkResponse
 
 	public ResponseRestart()
 	{
+		
 	}
 
 	public override void parse()

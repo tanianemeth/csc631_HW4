@@ -90,18 +90,30 @@ public class NetworkManager : MonoBehaviour
 		}
 		return false;
 	}
+public bool SendRestartRequest()
+{
+	if (cManager && cManager.IsConnected())
+	{
+		RequestRestart request = new RequestRestart();
+			request.send();
+			cManager.send(request);
+			return true;
 
+	}
+	return false;
+}
 	public bool SendInteractRequest(int pieceIndex, int targetIndex)
 	{
 		if (cManager && cManager.IsConnected())
 		{
 			RequestInteract request = new RequestInteract();
-			request.send(pieceIndex, targetIndex);
-			cManager.send(request);
-			return true;
+				request.send(pieceIndex, targetIndex);
+				cManager.send(request);
+				return true;
 		}
 		return false;
 	}
+
 
 	public IEnumerator RequestHeartbeat(float time)
 	{
