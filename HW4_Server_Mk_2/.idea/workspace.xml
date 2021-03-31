@@ -2,43 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca50f9d1-b623-4afa-8b01-27d3086535b2" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../HW4_Client/Assets/Scripts/Network/Request/RequestScore.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HW4_Client/Assets/Scripts/Network/Response/ResponseScore.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../csc631_HW4.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW4_Client/Assets/Scenes/TicTacToe.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../HW4_Client/Assets/Scenes/TicTacToe.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW4_Client/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HW4_Client/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW4_Client/Assets/Scripts/Network/Constants.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HW4_Client/Assets/Scripts/Network/Constants.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW4_Client/Assets/Scripts/NetworkManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HW4_Client/Assets/Scripts/NetworkManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW4_Client/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HW4_Client/Assets/Scripts/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW4_Client/Assets/Scripts/UI/ActionMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HW4_Client/Assets/Scripts/UI/ActionMenu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW4_Client/Assets/Scripts/UI/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../HW4_Client/Assets/Scripts/UI/MainMenu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW4_Client/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../HW4_Client/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW4_Client/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../HW4_Client/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW4_Client/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../HW4_Client/ProjectSettings/ProjectVersion.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WoB_Server_Basic/metadata/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WoB_Server_Basic/metadata/Constants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WoB_Server_Basic/metadata/GameRequestTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WoB_Server_Basic/metadata/GameRequestTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WoB_Server_Basic/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WoB_Server_Basic/model/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/request/RequestJoin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/request/RequestJoin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/request/RequestRestart.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/request/RequestRestart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/request/RequestScore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/request/RequestScore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/request/RequestStartingPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/request/RequestStartingPlayer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/request/RequestWin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/request/RequestWin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/response/ResponseJoin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/response/ResponseJoin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/response/ResponseMove.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/response/ResponseMove.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/response/ResponseRestart.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/response/ResponseRestart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/response/ResponseScore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/response/ResponseScore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/response/ResponseStartingPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/response/ResponseStartingPlayer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/response/ResponseWin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/WoB_Server_Basic/networking/response/ResponseWin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/metadata/GameRequestTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/metadata/GameRequestTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networking/request/RequestJoin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/networking/request/RequestJoin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networking/request/RequestScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/networking/request/RequestScore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networking/response/ResponseJoin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/networking/response/ResponseJoin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networking/response/ResponseRestart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/networking/response/ResponseRestart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/networking/response/ResponseScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/networking/response/ResponseScore.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
