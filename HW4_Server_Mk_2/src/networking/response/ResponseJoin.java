@@ -35,6 +35,7 @@ public class ResponseJoin extends GameResponse {
                 if(p.getID() != player.getID()) {
                     packet.addInt32(p.getID());
                     packet.addString(p.getName());
+                    packet.addInt32(p.getScore());
                     packet.addBoolean(p.getReadyStatus());
                     otherPlayerExists = true;
                 }

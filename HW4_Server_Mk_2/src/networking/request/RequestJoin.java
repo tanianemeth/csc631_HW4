@@ -9,6 +9,7 @@ import core.NetworkManager;
 import model.Player;
 import networking.response.ResponseJoin;
 import networking.response.ResponseName;
+import networking.response.ResponseScore;
 import utility.Log;
 
 /**
@@ -37,7 +38,7 @@ public class RequestJoin extends GameRequest {
         GameServer gs = GameServer.getInstance();
         int id = gs.getID();
         if(id != 0) {
-            player = new Player(id, "Player " + id);
+            player = new Player(id, "Player " + id, 0);
             player.setID(id);
             gs.setActivePlayer(player);
 
@@ -52,6 +53,8 @@ public class RequestJoin extends GameRequest {
             ResponseName responseName = new ResponseName();
             responseName.setPlayer(player);
             NetworkManager.addResponseForAllOnlinePlayers(player.getID(), responseName);
+
+
         } else {
             Log.printf("A user has tried to join, but failed to do so.");
             responseJoin.setStatus((short) 1); 

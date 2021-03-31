@@ -12,15 +12,17 @@ public class Player {
     private boolean isReady = false;
     private int player_id;
     private String name;
+    private int score;
     private GameClient client; // References GameClient instance
 
     public Player(int player_id) {
         this.player_id = player_id;
     }
 
-    public Player(int player_id, String name) {
+    public Player(int player_id, String name, int score) {
         this.player_id = player_id;
         this.name = name;
+        this.score = score;
     }
 
     public int getID() {
@@ -37,6 +39,14 @@ public class Player {
 
     public String setName(String name) {
         return this.name = name;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public int setScore(int score) {
+        return this.score = score;
     }
 
     public GameClient getClient() {

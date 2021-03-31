@@ -20,6 +20,9 @@ public class MainMenu : MonoBehaviour
 
 	private TMPro.TextMeshProUGUI playerName;
 	private TMPro.TextMeshProUGUI opponentName;
+
+private TMPro.TextMeshProUGUI playerScore;
+	private TMPro.TextMeshProUGUI opponentScore;
 	private GameObject playerInput;
 	private GameObject opponentInput;
 
@@ -28,6 +31,10 @@ public class MainMenu : MonoBehaviour
 
 	private string p1Name = "Player 1";
 	private string p2Name = "Player 2";
+
+	private int p1score = 0;
+
+	private int p2score = 0;
 
 	private bool ready = false;
 	private bool opReady = false;
@@ -53,6 +60,7 @@ public class MainMenu : MonoBehaviour
 		msgQueue.AddCallback(Constants.SMSG_JOIN, OnResponseJoin);
 		msgQueue.AddCallback(Constants.SMSG_LEAVE, OnResponseLeave);
 		msgQueue.AddCallback(Constants.SMSG_SETNAME, OnResponseSetName);
+		msgQueue.AddCallback(Constants.SMSG_SCORE, OnResponseSetScore);
 		msgQueue.AddCallback(Constants.SMSG_READY, OnResponseReady);
 
 		rootMenuPanel.SetActive(true);
@@ -219,6 +227,23 @@ public class MainMenu : MonoBehaviour
 		}
 	}
 
+		public void OnResponseSetScore(ExtendedEventArgs eventArgs)
+	{
+		ResponseScoreEventArgs args = eventArgs as ResponseScoreEventArgs;
+		if (args.user_id != Constants.USER_ID)
+		{
+			opponentScore.text = args.user_score.ToString();
+			if (args.user_id == 1)
+			{
+				p1score = args.user_score;
+			}
+			else
+			{
+				p2score = args.user_score;
+			}
+		}
+	}
+
 	public void OnReadyClick()
 	{
 		Debug.Log("Send ReadyReq");
@@ -276,8 +301,8 @@ public class MainMenu : MonoBehaviour
 		{
 			p2Name = "Player 2";
 		}
-		Player player1 = new Player(1, p1Name, new Color(0.9f, 0.1f, 0.1f), true);
-		Player player2 = new Player(2, p2Name, new Color(0.2f, 0.2f, 1.0f), true);
+		Player player1 = new Player(1, p1Name,0, new Color(0.9f, 0.1f, 0.1f), true);
+		Player player2 = new Player(2, p2Name,0, new Color(0.2f, 0.2f, 1.0f), true);
 		gameManager.Init(player1, player2);
 		SceneManager.LoadScene("TicTacToe");
 	}
@@ -293,8 +318,8 @@ public class MainMenu : MonoBehaviour
 		{
 			p2Name = "Player 2";
 		}
-		Player player1 = new Player(1, p1Name, new Color(0.9f, 0.1f, 0.1f), Constants.USER_ID == 1);
-		Player player2 = new Player(2, p2Name, new Color(0.2f, 0.2f, 1.0f), Constants.USER_ID == 2);
+		Player player1 = new Player(1, p1Name, 0,new Color(0.9f, 0.1f, 0.1f), Constants.USER_ID == 1);
+		Player player2 = new Player(2, p2Name, 0,new Color(0.2f, 0.2f, 1.0f), Constants.USER_ID == 2);
 		gameManager.Init(player1, player2);
 		SceneManager.LoadScene("TicTacToe");
 	}

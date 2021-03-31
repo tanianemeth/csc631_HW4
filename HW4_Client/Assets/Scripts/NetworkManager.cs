@@ -91,6 +91,18 @@ public class NetworkManager : MonoBehaviour
 		return false;
 	}
 
+		public bool SendScoreRequest(int score)
+	{
+		if (cManager && cManager.IsConnected())
+		{
+			RequestScore request = new RequestScore();
+			request.send(score);
+			cManager.send(request);
+			return true;
+		}
+		return false;
+	}
+
 	public bool SendInteractRequest(int pieceIndex, int targetIndex)
 	{
 		if (cManager && cManager.IsConnected())

@@ -1,10 +1,14 @@
 package networking.response;
 
 // Other Imports
+import core.GameServer;
 import metadata.Constants;
 import model.Player;
 import utility.GamePacket;
 import utility.Log;
+
+import java.util.List;
+
 /**
  * The ResponseLogin class contains information about the authentication
  * process.
@@ -21,8 +25,16 @@ public class ResponseRestart extends GameResponse {
         GamePacket packet = new GamePacket(responseCode);
         packet.addInt32(player.getID());
 
-        Log.printf("Player with id %d wants a rematch", player.getID());
-        
+        GameServer gs = GameServer.getInstance();
+        List<Player> activePlayers = gs.getActivePlayers();
+
+        for(Player p : activePlayers) {
+            if(p.getID() == player.getID())
+                gs.removeActivePlayer(p.getID());
+        }
+
+        Log.printf("Player with id %d has left.", player.getID());
+
         return packet.getBytes();
     }
 

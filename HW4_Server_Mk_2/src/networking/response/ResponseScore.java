@@ -33,7 +33,9 @@ public class ResponseScore extends GameResponse {
         this.player = player;
     }
 
-    public void setData(int score) {
+    public void setScore(int score)
+    {
         this.score = score;
     }
+
 }

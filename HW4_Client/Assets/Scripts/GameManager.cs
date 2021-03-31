@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 		return Players[currentPlayer - 1];
 	}
 
+
 	public void Init(Player player1, Player player2)
 	{
 		Players[0] = player1;
@@ -204,6 +205,7 @@ public class GameManager : MonoBehaviour
 					//checkForWin();
 					if(checkForWin()){
 						print("You won");
+						GetCurrentPlayer().Score += 1;
 						canInteract = true;
 					}
 					else{
