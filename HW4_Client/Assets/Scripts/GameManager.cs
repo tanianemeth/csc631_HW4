@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
 		msgQueue.AddCallback(Constants.SMSG_INTERACT, OnResponseInteract);
 		msgQueue.AddCallback(Constants.SMSG_WIN, OnResponseWin);
 		msgQueue.AddCallback(Constants.SMSG_RESTART, OnResponseRestart);
+		msgQueue.AddCallback(Constants.SMSG_SETPLAYER, OnResponseSetPlayer);
 	}
 
 	public Player GetCurrentPlayer()
@@ -169,6 +170,7 @@ public class GameManager : MonoBehaviour
 	{
 
 		if(checkForWin() || checkForDraw()){
+			//currentPlayer = 3 - currentPlayer;
 			for(int x =0; x < 3; x++)
 			{
 				for(int y = 0; y < 3; y ++){
@@ -326,6 +328,7 @@ public class GameManager : MonoBehaviour
 		if(useNetwork)
 		{
 			networkManager.SendRestartRequest();
+			networkManager.SendSetPlayerRequest(3-currentPlayer);
 		}
 		restart();
 	}
@@ -372,6 +375,11 @@ public class GameManager : MonoBehaviour
 		{
 			Debug.Log("ERROR: Invalid user_id in ResponseReady: " + args.user_id);
 		}
+	}
+	public void OnResponseSetPlayer(ExtendedEventArgs eventArgs)
+	{
+		ResponseSetPlayerEventArgs args = eventArgs as ResponseSetPlayerEventArgs;
+		currentPlayer = args.player_id;
 	}
 	public void OnResponseWin(ExtendedEventArgs eventArgs)
 	{

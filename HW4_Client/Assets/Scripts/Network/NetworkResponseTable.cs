@@ -17,6 +17,7 @@ public class NetworkResponseTable {
 		add(Constants.SMSG_INTERACT, "ResponseInteract");
 		add(Constants.SMSG_RESTART, "ResponseRestart");
 		add(Constants.SMSG_WIN, "ResponseWin");
+		add(Constants.SMSG_SETPLAYER, "ResponseSetPlayer");
 	}
 
 	public static void add(short response_id, string name) {

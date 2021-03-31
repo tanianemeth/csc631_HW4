@@ -90,6 +90,18 @@ public class NetworkManager : MonoBehaviour
 		}
 		return false;
 	}
+public bool SendSetPlayerRequest(int player_id)
+{
+	if (cManager && cManager.IsConnected())
+	{
+		RequestSetPlayer request = new RequestSetPlayer();
+		request.send(player_id);
+		cManager.send(request);
+		return true;
+
+	}
+	return false;
+}
 public bool SendRestartRequest()
 {
 	if (cManager && cManager.IsConnected())

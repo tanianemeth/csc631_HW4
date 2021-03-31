@@ -23,6 +23,8 @@ public class Constants
 	public static readonly short SMSG_WIN = 207;
 	public static readonly short CMSG_RESTART = 108;
 	public static readonly short SMSG_RESTART = 208;
+	public static readonly short CMSG_SETPLAYER = 109;
+	public static readonly short SMSG_SETPLAYER = 209;
 
 	public static int USER_ID = -1;
 	public static int OP_ID = -1;

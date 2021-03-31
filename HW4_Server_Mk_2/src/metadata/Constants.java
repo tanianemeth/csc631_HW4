@@ -32,6 +32,8 @@ public class Constants {
 	final public static short CMSG_SCORE = 110;
 	final public static short SMSG_SCORE = 210;
 	final public static short CMSG_HEARTBEAT = 111;
+	final public static short CMSG_SETPLAYER = 109;
+	final public static short SMSG_SETPLAYER = 209;
 
 	final public static int USER_ID = -1;
 	final public static int OP_ID = -1;

@@ -6,6 +6,7 @@ import java.util.Map;
 
 // Other Imports
 import networking.request.GameRequest;
+import networking.request.RequestSetPlayer;
 import utility.Log;
 
 /**
@@ -30,6 +31,7 @@ public class GameRequestTable {
         add(Constants.CMSG_HEARTBEAT, "RequestHeartbeat");
         add(Constants.CMSG_WIN, "RequestWin");
         add(Constants.CMSG_RESTART, "RequestRestart");
+        add(Constants.CMSG_SETPLAYER, "RequestSetPlayer");
     }
 
     /**
